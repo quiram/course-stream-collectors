@@ -3,31 +3,26 @@ package com.github.quiram.course.collectors.a.safer.commands;
 import org.junit.jupiter.api.Test;
 
 import static com.github.quiram.utils.Random.randomString;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class RepeatCommandTest {
+class RepeatCommandTest extends CommandTestBase {
 
-    private final RepeatCommand command = new RepeatCommand();
-
-    @Test
-    void supportedIfStartsWithRepeat() {
-        assertTrue(command.supports("repeat all this"));
+    @Override
+    protected RepeatCommand command() {
+        return new RepeatCommand();
     }
 
     @Test
-    void notSupportedInAnyOtherCase() {
-        assertFalse(command.supports(randomString()));
+    void supportedIfStartsWithRepeat() {
+        assertTrue(command().supports("repeat " + randomString()));
     }
 
     @Test
     void repeatsEverythingAfterTheCommand() {
         final String order = randomString();
-        final String result = command.apply("repeat " + order);
+        final String result = command().apply("repeat " + order);
         assertEquals(order, result);
     }
 
-    @Test
-    void failsIfApplyingUnsupportedCommand() {
-        assertThrows(UnsupportedCommandException.class, () -> command.apply(randomString()));
-    }
 }
