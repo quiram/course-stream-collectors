@@ -1,6 +1,6 @@
 package com.github.quiram.course.collectors.a.safer.commands;
 
-public class RepeatCommand implements Command {
+public class RepeatCommand extends Command {
     @Override
     public boolean supports(String command) {
         return command.startsWith("repeat ");

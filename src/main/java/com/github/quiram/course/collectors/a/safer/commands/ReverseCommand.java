@@ -6,7 +6,7 @@ import java.util.List;
 import static java.lang.String.join;
 import static java.util.Collections.reverse;
 
-public class ReverseCommand implements Command {
+public class ReverseCommand extends Command {
     @Override
     public boolean supports(String command) {
         return command.endsWith(" in reverse");
