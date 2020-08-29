@@ -27,7 +27,7 @@ public class Program {
 
             maybeCommand.ifPresentOrElse(
                     command -> System.out.println(command.apply(input)),
-                    () -> System.out.println(format("No command supports input '%s'", input))
+                    () -> System.err.println(format("No command supports input '%s'", input))
             );
         }
 
