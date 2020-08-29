@@ -2,7 +2,7 @@ package com.github.quiram.course.collectors.a.safer.commands;
 
 public class PingCommand extends Command {
     @Override
-    boolean supports(String command) {
+    protected boolean safelySupports(String command) {
         return "ping".equals(command);
     }
 

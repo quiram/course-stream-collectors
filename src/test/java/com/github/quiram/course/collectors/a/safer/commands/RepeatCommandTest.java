@@ -20,7 +20,7 @@ class RepeatCommandTest extends CommandTestBase {
     @Test
     void repeatsEverythingAfterTheCommand() {
         final String order = randomString();
-        final String result = command().apply("repeat " + order);
+        final String result = command().apply(" repeat " + order);
         assertEquals(order, result);
     }
 

@@ -8,7 +8,7 @@ import static java.util.Collections.reverse;
 
 public class ReverseCommand extends Command {
     @Override
-    public boolean supports(String command) {
+    protected boolean safelySupports(String command) {
         return command.endsWith(" in reverse");
     }
 

@@ -22,6 +22,14 @@ abstract class CommandTestBase {
     }
 
     @Test
+    void supportedIfExpectedStringSurroundedByEmptySpace() {
+        final Command command = command();
+        final String input = "   " + supportedSample() + "    ";
+        assertTrue(command.supports(input));
+        assertNotNull(command.apply(input));
+    }
+
+    @Test
     void failsIfApplyingUnsupportedCommand() {
         assertThrows(UnsupportedCommandException.class, () -> command().apply(randomString()));
     }
