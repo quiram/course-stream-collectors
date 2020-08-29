@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static com.github.quiram.utils.Random.randomString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RepeatCommandTest extends CommandTestBase {
 
@@ -13,9 +12,9 @@ class RepeatCommandTest extends CommandTestBase {
         return new RepeatCommand();
     }
 
-    @Test
-    void supportedIfStartsWithRepeat() {
-        assertTrue(command().supports("repeat " + randomString()));
+    @Override
+    protected String supportedSample() {
+        return "repeat " + randomString();
     }
 
     @Test

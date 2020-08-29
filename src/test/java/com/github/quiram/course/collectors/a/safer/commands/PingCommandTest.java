@@ -3,7 +3,6 @@ package com.github.quiram.course.collectors.a.safer.commands;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PingCommandTest extends CommandTestBase {
     @Override
@@ -11,9 +10,9 @@ class PingCommandTest extends CommandTestBase {
         return new PingCommand();
     }
 
-    @Test
-    void supportsWordPing() {
-        assertTrue(command().supports("ping"));
+    @Override
+    protected String supportedSample() {
+        return "ping";
     }
 
     @Test
