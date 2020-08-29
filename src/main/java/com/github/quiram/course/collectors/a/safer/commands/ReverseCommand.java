@@ -13,11 +13,7 @@ public class ReverseCommand extends Command {
     }
 
     @Override
-    public String apply(String command) {
-        if (!supports(command)) {
-            throw new UnsupportedCommandException(command);
-        }
-
+    public String safelyApply(String command) {
         final List<String> words = Arrays.asList(command.substring(0, command.length() - 11).split("\\s"));
         reverse(words);
         return join(" ", words);

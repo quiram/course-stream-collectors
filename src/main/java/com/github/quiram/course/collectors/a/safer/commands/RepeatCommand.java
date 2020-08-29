@@ -7,11 +7,7 @@ public class RepeatCommand extends Command {
     }
 
     @Override
-    public String apply(String command) {
-        if (!supports(command)) {
-            throw new UnsupportedCommandException(command);
-        }
-
+    public String safelyApply(String command) {
         return command.substring(7);
     }
 
