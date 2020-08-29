@@ -25,7 +25,7 @@ public class Program {
 
     public static void main(String[] args) {
         taxableVehicles().forEach(v ->
-                System.out.println(format("Vehicle type: %s, Expected tax: £%d", v.type(), v.engineCapacity() / 2))
+                System.out.println(format("Vehicle: %s, Expected tax: £%d", v, v.engineCapacity() / 2))
         );
     }
 
