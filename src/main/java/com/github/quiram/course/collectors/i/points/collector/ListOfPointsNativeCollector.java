@@ -20,6 +20,11 @@ public class ListOfPointsNativeCollector implements Collector<Integer, ListOfPoi
         return new ListOfPointsNativeCollector();
     }
 
+    public static class Container {
+        List<Point> list;
+        Optional<Integer> number;
+    }
+
     @Override
     public Supplier<Container> supplier() {
         final Container container = new Container();
@@ -52,11 +57,6 @@ public class ListOfPointsNativeCollector implements Collector<Integer, ListOfPoi
 
             throw new RuntimeException("Cannot create a list of Points from an odd number of integers.");
         };
-    }
-
-    public static class Container {
-        List<Point> list;
-        Optional<Integer> number;
     }
 
     @Override
