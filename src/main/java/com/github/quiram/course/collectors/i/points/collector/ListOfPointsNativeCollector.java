@@ -61,7 +61,9 @@ public class ListOfPointsNativeCollector implements Collector<Integer, ListOfPoi
 
     @Override
     public BinaryOperator<Container> combiner() {
-        return null;
+        return ($1, $2) -> {
+            throw new RuntimeException("This collector doesn't support parallel streams.");
+        };
     }
 
     @Override
