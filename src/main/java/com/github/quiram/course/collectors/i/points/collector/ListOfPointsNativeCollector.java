@@ -60,12 +60,12 @@ public class ListOfPointsNativeCollector implements Collector<Integer, ListOfPoi
     }
 
     @Override
-    public Set<Characteristics> characteristics() {
-        return emptySet();
+    public BinaryOperator<Container> combiner() {
+        return null;
     }
 
     @Override
-    public BinaryOperator<Container> combiner() {
-        return null;
+    public Set<Characteristics> characteristics() {
+        return emptySet();
     }
 }
