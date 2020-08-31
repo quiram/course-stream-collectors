@@ -14,47 +14,47 @@ import java.util.stream.Collector;
 
 import static java.util.Collections.emptySet;
 
-public class ListOfPointsNativeCollector implements Collector<Integer, ListOfPointsNativeCollector.ResultContainer, List<Point>> {
+public class ListOfPointsNativeCollector implements Collector<Integer, ListOfPointsNativeCollector.Container, List<Point>> {
 
     public static Collector<Integer, ?, List<Point>> toListOfPoints() {
         return new ListOfPointsNativeCollector();
     }
 
     @Override
-    public Supplier<ResultContainer> supplier() {
-        final ResultContainer resultContainer = new ResultContainer();
-        resultContainer.list = new ArrayList<>();
-        resultContainer.number = Optional.empty();
-        return () -> resultContainer;
+    public Supplier<Container> supplier() {
+        final Container container = new Container();
+        container.list = new ArrayList<>();
+        container.number = Optional.empty();
+        return () -> container;
     }
 
     @Override
-    public BiConsumer<ResultContainer, Integer> accumulator() {
-        return ((resultContainer, integer) -> {
-            if (resultContainer.number.isEmpty()) {
-                resultContainer.number = Optional.of(integer);
+    public BiConsumer<Container, Integer> accumulator() {
+        return ((container, integer) -> {
+            if (container.number.isEmpty()) {
+                container.number = Optional.of(integer);
             } else {
                 final Point point = new Point();
-                point.x = resultContainer.number.get();
+                point.x = container.number.get();
                 point.y = integer;
-                resultContainer.list.add(point);
-                resultContainer.number = Optional.empty();
+                container.list.add(point);
+                container.number = Optional.empty();
             }
         });
     }
 
     @Override
-    public Function<ResultContainer, List<Point>> finisher() {
-        return resultContainer -> {
-            if (resultContainer.number.isEmpty()) {
-                return resultContainer.list;
+    public Function<Container, List<Point>> finisher() {
+        return container -> {
+            if (container.number.isEmpty()) {
+                return container.list;
             }
 
             throw new RuntimeException("Cannot create a list of Points from an odd number of integers.");
         };
     }
 
-    public static class ResultContainer {
+    public static class Container {
         List<Point> list;
         Optional<Integer> number;
     }
@@ -65,7 +65,7 @@ public class ListOfPointsNativeCollector implements Collector<Integer, ListOfPoi
     }
 
     @Override
-    public BinaryOperator<ResultContainer> combiner() {
+    public BinaryOperator<Container> combiner() {
         return null;
     }
 }
