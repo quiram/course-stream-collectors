@@ -44,11 +44,6 @@ public class ListOfPointsNativeCollector implements Collector<Integer, ListOfPoi
     }
 
     @Override
-    public BinaryOperator<ResultContainer> combiner() {
-        return null;
-    }
-
-    @Override
     public Function<ResultContainer, List<Point>> finisher() {
         return resultContainer -> {
             if (resultContainer.number.isEmpty()) {
@@ -59,13 +54,18 @@ public class ListOfPointsNativeCollector implements Collector<Integer, ListOfPoi
         };
     }
 
+    public static class ResultContainer {
+        List<Point> list;
+        Optional<Integer> number;
+    }
+
     @Override
     public Set<Characteristics> characteristics() {
         return emptySet();
     }
 
-    public static class ResultContainer {
-        List<Point> list;
-        Optional<Integer> number;
+    @Override
+    public BinaryOperator<ResultContainer> combiner() {
+        return null;
     }
 }
