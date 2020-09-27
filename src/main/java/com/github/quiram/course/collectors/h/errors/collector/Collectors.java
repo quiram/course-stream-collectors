@@ -13,7 +13,7 @@ public class Collectors {
                 toList(),
                 list -> {
                     final List<P> offendingItems = list.stream()
-                            .filter(x -> !klass.isAssignableFrom(x.getClass()))
+                            .filter(p -> !klass.isAssignableFrom(p.getClass()))
                             .collect(toList());
 
                     if (offendingItems.isEmpty()) {
