@@ -1,4 +1,4 @@
-package com.github.quiram.course.collectors.i.points.collector;
+package com.github.quiram.course.collectors.j.points.collector;
 
 import com.github.quiram.course.collectors.i.points.Point;
 
