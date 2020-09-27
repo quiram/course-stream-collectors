@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import static com.github.quiram.course.collectors.i.points.collector.ListOfPointsSimpleCollector.toListOfPoints;
-import static java.lang.String.format;
 import static java.util.Arrays.stream;
 import static java.util.function.Predicate.not;
 
@@ -22,7 +21,7 @@ public class Program {
                         .collect(toListOfPoints()); // List<Point>
 
                 coordinates.forEach(
-                        point -> System.out.println(format("(%d, %d)", point.x, point.y))
+                        point -> System.out.printf("(%d, %d)%n", point.x, point.y)
                 );
             } catch (Exception e) {
                 System.err.println(e.getMessage());

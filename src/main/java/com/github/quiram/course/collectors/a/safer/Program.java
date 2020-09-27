@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-import static java.lang.String.format;
 import static java.util.Arrays.asList;
 
 public class Program {
@@ -27,7 +26,7 @@ public class Program {
 
             maybeCommand.ifPresentOrElse(
                     command -> System.out.println(command.apply(input)),
-                    () -> System.err.println(format("No command supports input '%s'", input))
+                    () -> System.err.printf("No command supports input '%s'%n", input)
             );
         }
 

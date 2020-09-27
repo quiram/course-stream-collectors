@@ -7,7 +7,6 @@ import com.github.quiram.course.collectors.f.errors.vehicles.Tricycle;
 import java.util.List;
 
 import static com.github.quiram.course.collectors.g.errors.collector.Collectors.toMotorVehicleList;
-import static java.lang.String.format;
 import static java.util.Arrays.asList;
 
 public class Program {
@@ -33,7 +32,7 @@ public class Program {
 
     public static void main(String[] args) {
         taxableVehicles().forEach(v ->
-                System.out.println(format("Vehicle: %s, Expected tax: £%d", v, v.engineCapacity() / 2))
+                System.out.printf("Vehicle: %s, Expected tax: £%d%n", v, v.engineCapacity() / 2)
         );
     }
 
