@@ -1,19 +1,19 @@
 package com.github.quiram.course.collectors.a.safer.commands;
 
 public abstract class Command {
-    public final boolean supports(String command) {
-        return safelySupports(command.trim());
+    public final boolean supports(String input) {
+        return safelySupports(input.trim());
     }
 
-    abstract protected boolean safelySupports(String command);
+    abstract protected boolean safelySupports(String input);
 
-    public final String apply(String command) {
-        if (!supports(command)) {
-            throw new UnsupportedCommandException(command);
+    public final String apply(String input) {
+        if (!supports(input)) {
+            throw new UnsupportedCommandException(input);
         }
 
-        return safelyApply(command.trim());
+        return safelyApply(input.trim());
     }
 
-    abstract protected String safelyApply(String command);
+    abstract protected String safelyApply(String input);
 }

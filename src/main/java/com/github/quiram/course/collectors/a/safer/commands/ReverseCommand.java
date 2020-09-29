@@ -8,13 +8,13 @@ import static java.util.Collections.reverse;
 
 public class ReverseCommand extends Command {
     @Override
-    protected boolean safelySupports(String command) {
-        return command.endsWith(" in reverse");
+    protected boolean safelySupports(String input) {
+        return input.endsWith(" in reverse");
     }
 
     @Override
-    public String safelyApply(String command) {
-        final List<String> words = asList(command.substring(0, command.length() - 11).split("\\s"));
+    public String safelyApply(String input) {
+        final List<String> words = asList(input.substring(0, input.length() - 11).split("\\s"));
         reverse(words);
         return join(" ", words);
     }
