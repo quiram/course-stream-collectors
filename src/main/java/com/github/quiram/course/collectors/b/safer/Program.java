@@ -8,6 +8,7 @@ import com.github.quiram.course.collectors.a.safer.commands.ReverseCommand;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.stream.Collector;
 
 import static com.github.quiram.course.collectors.b.safer.collector.Collectors.toMaybeOne;
 import static java.util.Arrays.asList;
@@ -36,5 +37,9 @@ public class Program {
         }
 
         scanner.close();
+    }
+
+    private static Collector<Command, ?, Optional<Command>> toMaybeOneCommand() {
+        return toMaybeOne("More than command supports this input, options are: ");
     }
 }
