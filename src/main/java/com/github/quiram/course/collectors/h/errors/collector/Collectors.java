@@ -8,21 +8,21 @@ import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
 public class Collectors {
-    public static <P, T extends P> Collector<P, ?, List<T>> toListOf(Class<T> klass) {
+    public static <ParentType, ResultType extends ParentType> Collector<ParentType, ?, List<ResultType>> toListOf(Class<ResultType> resultType) {
         return collectingAndThen(
                 toList(),
                 list -> {
-                    final List<P> offendingItems = list.stream()
-                            .filter(p -> !klass.isAssignableFrom(p.getClass()))
+                    final List<ParentType> offendingItems = list.stream()
+                            .filter(p -> !resultType.isAssignableFrom(p.getClass()))
                             .collect(toList());
 
                     if (offendingItems.isEmpty()) {
                         return list.stream()
-                                .map(klass::cast)
+                                .map(resultType::cast)
                                 .collect(toList());
                     }
 
-                    throw new RuntimeException(format("The following items cannot be cast to %s: %s", klass.getSimpleName(), offendingItems));
+                    throw new RuntimeException(format("The following items cannot be cast to %s: %s", resultType.getSimpleName(), offendingItems));
                 });
     }
 }
