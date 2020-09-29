@@ -7,7 +7,13 @@ import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
 public class Collectors {
+
+
     public static <T> Collector<T, ?, Optional<T>> toMaybeOne() {
+        return toMaybeOne("At most one element expected but got ");
+    }
+
+    public static <T> Collector<T, ?, Optional<T>> toMaybeOne(String errorPrefix) {
         return collectingAndThen(
                 toList(),
                 list -> {
@@ -19,7 +25,7 @@ public class Collectors {
                         return Optional.of(list.get(0));
                     }
 
-                    throw new RuntimeException("At most one element expected, but got " + list);
+                    throw new RuntimeException(errorPrefix + list);
                 }
         );
     }
