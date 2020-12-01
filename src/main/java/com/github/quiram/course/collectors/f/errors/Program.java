@@ -38,7 +38,7 @@ public class Program {
 
     private static List<MotorVehicle> taxableVehicles() {
         return vehicles.stream()
-                .filter(v -> v.numberOfWheels() > 4)
+                .filter(v -> v.numberOfWheels() > 2)
                 .map(MotorVehicle.class::cast)
                 .collect(toList());
     }
