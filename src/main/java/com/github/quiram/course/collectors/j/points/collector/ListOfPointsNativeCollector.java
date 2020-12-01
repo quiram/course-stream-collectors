@@ -21,16 +21,18 @@ public class ListOfPointsNativeCollector implements Collector<Integer, ListOfPoi
     }
 
     public static class Container {
-        List<Point> list;
+        final List<Point> list;
         Optional<Integer> number;
+
+        public Container() {
+            list = new ArrayList<>();
+            number = Optional.empty();
+        }
     }
 
     @Override
     public Supplier<Container> supplier() {
-        final Container container = new Container();
-        container.list = new ArrayList<>();
-        container.number = Optional.empty();
-        return () -> container;
+        return Container::new;
     }
 
     @Override
