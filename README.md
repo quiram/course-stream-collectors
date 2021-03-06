@@ -1,5 +1,5 @@
 # course-stream-collectors
-Code for the online course [Java Streams Collectors Like A Pro](https://ndcworkshops.com/slot/java-stream-collectors-like-a-pro) (26th February 2021, 12pm GMT).
+Code for the online course [Java Streams Collectors Like A Pro](https://ndcworkshops.com/slot/java-stream-collectors-like-a-pro) (16th April 2021, 12pm CET).
 
 See also these [collectors](https://github.com/quiram/java-utils/blob/master/src/main/java/com/github/quiram/utils/Collectors.java) for your perusal.
 
